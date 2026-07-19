@@ -1,0 +1,80 @@
+/* RESPONSIVIDAD */
+
+@media (max-width: 768px) {
+
+  /* Layout */
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .app-content {
+    padding: 16px 14px 80px;
+  }
+
+  .bottom-nav {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .calc-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Dashboard */
+  .welcome-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Mascota */
+  .mascot-wrap {
+    bottom: 80px;
+    right: 12px;
+  }
+
+  .mascot-body {
+    width: 54px;
+    height: 54px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .calc-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 24px 18px;
+  }
+
+  .landing-title {
+    font-size: 2.2rem;
+  }
+
+  .landing-cards {
+    gap: 10px;
+  }
+
+  .landing-card {
+    min-width: 100px;
+    padding: 18px 14px;
+  }
+
+  .gauge-bmi {
+    font-size: 2.2rem;
+  }
+}

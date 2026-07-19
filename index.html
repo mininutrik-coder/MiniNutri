@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiniNutri Tu Salud Divertida</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!--  LOADING  -->
+  <div id="screen-loading" class="screen active">
+    <div class="loading-icon-wrap">
+      <img src="./assets/Kiwi.png" alt="Kiwi" class="loading-kiwi">
+    </div>
+    <div class="loading-logo">MiniNutri</div>
+    <div class="loading-sub">Tu compañero de nutrición saludable</div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar"></div>
+    </div>
+  </div>
+
+  <!--  LANDING  -->
+  <div id="screen-landing" class="screen">
+    <span class="landing-badge">Diseñado para niños de 5 a 9 años</span>
+    <h1 class="landing-title">Mini<span>Nutri</span> <img src="./assets/Kiwi.png" alt="kiwi"
+        style="width:60px;height:60px;object-fit:contain;vertical-align:middle"></h1>
+    <p class="landing-sub">Aprende a comer rico y a moverte con tu amigo Mini. ¡Divertido y saludable!</p>
+    <div class="landing-cards">
+      <div class="landing-card">
+        <img src="./assets/Ensalda_verde.png" alt="Alimentación sana" class="landing-icon">
+        <p>Alimentación sana</p>
+      </div>
+      <div class="landing-card">
+        <img src="./assets/Ejercicio.png" alt="Ejercicio divertido" class="landing-icon">
+        <p>Ejercicio divertido</p>
+      </div>
+      <div class="landing-card">
+        <img src="./assets/Regla.png" alt="Calcula tu IMC" class="landing-icon">
+        <p>Calcula tu IMC</p>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="showScreen('login')">¡Comenzar ahora!</button>
+  </div>
+
+  <!--  LOGIN  -->
+  <div id="screen-login" class="screen">
+    <div class="auth-top-bar">
+      <div class="auth-brand" onclick="showScreen('landing')">MiniNutri</div>
+    </div>
+    <div class="auth-center">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>¡Bienvenido de vuelta!</h2>
+          <p>Ingresa con los datos del padre/tutor</p>
+        </div>
+        <div id="login-alert"></div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="login-email" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="login-pass" placeholder="">
+        </div>
+        <button class="btn btn-green w-full mt-12" onclick="doLogin()">Iniciar sesión </button>
+        <p class="auth-link">¿No tienes cuenta? <a onclick="showScreen('register')">Regístrate aquí</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!--  REGISTER  -->
+  <div id="screen-register" class="screen">
+    <div class="auth-top-bar">
+      <div class="auth-brand" onclick="showScreen('landing')">MiniNutri</div>
+    </div>
+    <div class="auth-center">
+      <div class="auth-card wide">
+        <div class="step-indicator">
+          <div class="step active" id="step1-dot">1</div>
+          <div class="step-line" id="step-line1"></div>
+          <div class="step inactive" id="step2-dot">2</div>
+        </div>
+
+        <!-- PASO 1 -->
+        <div id="reg-step1">
+          <div class="auth-header">
+            <span class="emoji"></span>
+            <h2>Datos del padre/tutor</h2>
+            <p>Paso 1 de 2</p>
+          </div>
+          <div id="reg-alert"></div>
+          <div class="form-group"><label>Nombre(s)</label><input type="text" id="r-name" placeholder="Tu nombre"></div>
+          <div class="form-row">
+            <div class="form-group"><label>Apellido paterno</label><input type="text" id="r-lname1"
+                placeholder="Paterno"></div>
+            <div class="form-group"><label>Apellido materno</label><input type="text" id="r-lname2"
+                placeholder="Materno"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Teléfono</label><input type="tel" id="r-phone" placeholder="55 1234 5678">
+            </div>
+            <div class="form-group"><label>Correo electrónico</label><input type="email" id="r-email"
+                placeholder="correo@ejemplo.com"></div>
+          </div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="r-pass"
+              placeholder="Mínimo 8 caracteres"></div>
+          <div class="form-group"><label>Dirección (opcional)</label><input type="text" id="r-addr"
+              placeholder="Tu dirección"></div>
+          <button class="btn btn-green w-full" onclick="nextStep()">Continuar Datos del niño</button>
+          <p class="auth-link">¿Ya tienes cuenta? <a onclick="showScreen('login')">Inicia sesión</a></p>
+        </div>
+
+        <!-- PASO 2 -->
+        <div id="reg-step2" class="hidden">
+          <div class="auth-header">
+            <span class="emoji"></span>
+            <h2>Datos del niño/a</h2>
+            <p>Paso 2 de 2</p>
+          </div>
+          <div class="form-group"><label>Nombre del niño/a</label><input type="text" id="c-name"
+              placeholder="Nombre del niño"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Edad</label>
+              <select id="c-age">
+                <option value="">Seleccionar</option>
+                <option value="5">5 años</option>
+                <option value="6">6 años</option>
+                <option value="7">7 años</option>
+                <option value="8">8 años</option>
+                <option value="9">9 años</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Género</label>
+              <div class="gender-toggle">
+                <button class="gender-btn" id="gbtn-m" onclick="selectGender('male')"><span
+                    class="g-emoji"></span>Niño</button>
+                <button class="gender-btn" id="gbtn-f" onclick="selectGender('female')"><span
+                    class="g-emoji"></span>Niña</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Peso (kg)</label><input type="number" id="c-weight" placeholder="35.5"
+                step="0.1" oninput="updateRegBMI()"></div>
+            <div class="form-group"><label>Talla (cm)</label><input type="number" id="c-height" placeholder="130"
+                oninput="updateRegBMI()"></div>
+          </div>
+          <div class="bmi-preview" id="reg-bmi-preview"></div>
+          <div class="form-row mt-16">
+            <button class="btn btn-outline" onclick="prevStep()"> Volver</button>
+            <button class="btn btn-green" style="flex:1" onclick="doRegister()">Crear cuenta </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  APP PRINCIPAL  -->
+  <div id="screen-app" class="screen">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-logo">MiniNutri</div>
+      <div class="nav-links">
+        <button class="nav-btn" onclick="showTab('calculator')" id="tab-calculator"> IMC</button>
+        <button class="nav-btn" onclick="showTab('dashboard')" id="tab-dashboard"> Mi Plan</button>
+        <button class="nav-btn" onclick="showTab('progress')" id="tab-progress"> Progreso</button>
+        <button class="nav-btn" onclick="showTab('profile')" id="tab-profile"> Perfil</button>
+        <button class="nav-btn nav-logout" onclick="doLogout()">Salir</button>
+      </div>
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <button class="nav-btn w-full mb-6" onclick="showTab('calculator');toggleMobileMenu()"> Calcular IMC</button>
+      <button class="nav-btn w-full mb-6" onclick="showTab('dashboard');toggleMobileMenu()"> Mi Plan</button>
+      <button class="nav-btn w-full mb-6" onclick="showTab('progress');toggleMobileMenu()"> Progreso</button>
+      <button class="nav-btn w-full mb-6" onclick="showTab('profile');toggleMobileMenu()"> Perfil</button>
+      <button class="nav-btn nav-logout w-full" onclick="doLogout()">Salir</button>
+    </div>
+
+    <div class="app-content">
+
+      <!-- TAB: CALCULADORA IMC -->
+      <div id="tab-content-calculator">
+        <div class="calc-card">
+          <div class="section-title"> Calcular IMC</div>
+          <div class="calc-form">
+            <div class="form-group">
+              <label>Género</label>
+              <div id="calc-gender-display" style="
+ padding:13px 16px;
+ border:2px solid #E8F5E9;
+ border-radius:20px;
+ background:#F1F8E9;
+ font-weight:700;
+ color:#2E7D32;
+ font-size:1rem;
+ "></div>
+            </div>
+            <div class="form-group">
+              <label>Peso (kg)</label>
+              <div id="calc-weight-display" style="
+ padding:13px 16px;
+ border:2px solid #E8F5E9;
+ border-radius:20px;
+ background:#F1F8E9;
+ font-weight:700;
+ color:#2E7D32;
+ font-size:1rem;
+ "></div>
+            </div>
+            <div class="form-group">
+              <label>Talla (cm)</label>
+              <div id="calc-height-display" style="
+ padding:13px 16px;
+ border:2px solid #E8F5E9;
+ border-radius:20px;
+ background:#F1F8E9;
+ font-weight:700;
+ color:#2E7D32;
+ font-size:1rem;
+ "></div>
+            </div>
+            <div class="form-group">
+              <label>Edad</label>
+              <div id="calc-age-display" style="
+ padding:13px 16px;
+ border:2px solid #E8F5E9;
+ border-radius:20px;
+ background:#F1F8E9;
+ font-weight:700;
+ color:#2E7D32;
+ font-size:1rem;
+ "></div>
+            </div>
+          </div>
+          <button class="btn btn-green w-full btn-lg" onclick="calcBMI()"> Calcular mi IMC</button>
+
+          <div class="gauge-wrap result-hidden" id="gauge-result" style="display:none">
+            <div id="apex-gauge"></div>
+            <div class="gauge-category" id="gauge-cat" style="font-size:1.2rem;font-weight:800;margin-top:4px"></div>
+            <div class="gauge-diff" id="gauge-diff"
+              style="font-size:.9rem;color:#4E6B52;margin-top:4px;margin-bottom:8px"></div>
+            <button class="btn btn-green mt-16" onclick="goToPlan()">Ver mi plan personalizado </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: DASHBOARD -->
+      <div id="tab-content-dashboard" class="hidden">
+        <div class="welcome-bar">
+          <div>
+            <h2 id="dash-welcome">¡Hola! </h2>
+            <p id="dash-subtitle">Aquí está tu plan de hoy</p>
+          </div>
+          <div class="bmi-badge-dash">
+            <div class="bmi-val" id="dash-bmi">--</div>
+            <div class="bmi-cat" id="dash-cat">IMC actual</div>
+          </div>
+        </div>
+        <!--
+ <div class="two-col">
+ <div class="panel-card">
+ <div class="panel-title"> Mis Dietas</div>
+ <div id="diet-cards"></div>
+ </div>
+ <div class="panel-card">
+ <div class="panel-title"> Mis Ejercicios</div>
+ <div id="exercise-cards"></div>
+ </div>
+ </div>
+ <div class="reco-box">
+ <div class="section-title"> Recomendaciones</div>
+ <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Se recomienda hacer ejercicio
+ entre las 7-9am o las 4-6pm para mayor beneficio.</span></div>
+ <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Si te sientes mareado,
+ siéntate, toma agua y descansa unos minutos.</span></div>
+ <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Siempre realiza
+ ejercicio con supervisión de un adulto de confianza.</span></div>
+ <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">No hagas ejercicio con el
+ estómago vacío. Come algo ligero antes.</span></div>
+ <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Dormir bien también es parte
+ de una vida saludable. ¡8 horas mínimo!</span></div>
+ </div>
+ -->
+      </div>
+
+      <!-- TAB: PROGRESO -->
+      <div id="tab-content-progress" class="hidden">
+        <div class="chart-wrap">
+          <div class="section-title"> Mi Progreso de IMC</div>
+          <canvas id="bmiChart"></canvas>
+        </div>
+        <div class="panel-card">
+          <div class="section-title"> Historial de Mediciones</div>
+          <div style="overflow-x:auto">
+            <table class="progress-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Peso</th>
+                  <th>Talla</th>
+                  <th>IMC</th>
+                  <th>Categoría</th>
+                </tr>
+              </thead>
+              <tbody id="progress-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: PERFIL -->
+      <div id="tab-content-profile" class="hidden">
+        <div class="profile-hero">
+          <span class="profile-avatar" id="profile-avatar"></span>
+          <div class="profile-name" id="profile-name">--</div>
+          <div id="profile-bmi-badge" class="profile-bmi-badge">IMC: --</div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat-card">
+            <div class="stat-val" id="stat-streak">0</div>
+            <div class="stat-label"> Días activo</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="stat-diets">0</div>
+            <div class="stat-label"> Dietas completadas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="stat-exercises">0</div>
+            <div class="stat-label"> Ejercicios hechos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="stat-days">0</div>
+            <div class="stat-label"> Días registrado</div>
+          </div>
+        </div>
+        <div class="panel-card mt-16">
+          <div class="section-title"> Actualizar Medidas</div>
+          <div class="form-row">
+            <div class="form-group"><label>Nuevo peso (kg)</label><input type="number" id="upd-weight" step="0.1"
+                placeholder="35.5"></div>
+            <div class="form-group"><label>Nueva talla (cm)</label><input type="number" id="upd-height"
+                placeholder="130"></div>
+          </div>
+          <button class="btn btn-green" onclick="updateMeasurement()">Actualizar medidas </button>
+        </div>
+      </div>
+
+    </div><!-- /app-content -->
+
+    <!-- BOTTOM NAV MÓVIL -->
+    <div class="bottom-nav">
+      <div class="bottom-nav-inner">
+        <button class="bnav-btn" onclick="showTab('calculator')" id="bnav-calculator"><span
+            class="bn-icon"></span>IMC</button>
+        <button class="bnav-btn" onclick="showTab('dashboard')" id="bnav-dashboard"><span class="bn-icon"></span>Mi
+          Plan</button>
+        <button class="bnav-btn" onclick="showTab('progress')" id="bnav-progress"><span
+            class="bn-icon"></span>Progreso</button>
+        <button class="bnav-btn" onclick="showTab('profile')" id="bnav-profile"><span
+            class="bn-icon"></span>Perfil</button>
+      </div>
+    </div>
+  </div><!-- /screen-app -->
+
+  <!--  MASCOTA  -->
+  <div class="mascot-wrap" id="mascot-wrap" style="display:none">
+    <div class="mascot-bubble" id="mascot-bubble">¡Hola! Soy Mini, tu amigo saludable </div>
+    <div class="mascot-body" onclick="mascotClick()"></div>
+  </div>
+
+  <!--  MODAL ACTUALIZACIÓN  -->
+  <div class="modal-overlay" id="update-modal">
+    <div class="modal">
+      <div class="modal-emoji"></div>
+      <h3>¡Hora de actualizar!</h3>
+      <p id="modal-msg">Ya pasaron 2 semanas. ¿Actualizamos tu peso y talla?</p>
+      <div class="form-group"><label>Nuevo peso (kg)</label><input type="number" id="modal-weight" step="0.1"
+          placeholder="35.5"></div>
+      <div class="form-group"><label>Nueva talla (cm)</label><input type="number" id="modal-height" placeholder="130">
+      </div>
+      <div class="bmi-preview" id="modal-bmi-preview" style="display:block;margin-top:8px">IMC se calculará
+        automáticamente</div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="dismissModal()">Después</button>
+        <button class="btn btn-green" onclick="submitModalUpdate()">Actualizar </button>
+      </div>
+    </div>
+  </div>
+
+  <!--  MODAL CELEBRACIÓN  -->
+  <div class="modal-overlay" id="celebrate-modal">
+    <div class="modal text-center">
+      <div class="modal-emoji" id="celebrate-emoji"></div>
+      <h3 id="celebrate-title">¡Increíble progreso!</h3>
+      <p id="celebrate-msg">¡Pasaste a un nuevo nivel!</p>
+      <button class="btn btn-green w-full mt-16" onclick="closeCelebrate()">¡Ver mi nuevo plan! </button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <!-- ApexCharts (gauge IMC) -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+  <!-- JS Modular (Supabase desconectado temporalmente) -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/mascot.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -313,6 +313,7 @@ function finalizeDiet() {
   saveState();
   renderDashboard(getCurrentCatKey());
   setMascotMsg('¡Guardaste tu dieta de hoy! ', true);
+  playSound(SOUNDS.saveDiet);
 }
 
 function renderDietSummary(dc) {
@@ -424,6 +425,7 @@ function completeActivity(type, idx) {
 
   const msg = CONGRATS[Math.floor(Math.random() * CONGRATS.length)];
   setMascotMsg(msg, true);
+  if (type === 'exercise') playDidItSound(appState.completedToday.exercises.length);
 
   const id = type === 'diet' ? `diet-${idx}` : `ex-${idx}`;
   const el = document.getElementById(id);

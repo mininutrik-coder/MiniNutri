@@ -77,6 +77,7 @@ async function calcBMI() {
     ? `+${diff} del rango normal`
     : `${diff} del rango normal`;
 
+  playCatSound(cat.key);
   renderApexGauge(bmi, cat);
   renderPlanActionButton();
 

@@ -22,6 +22,7 @@ async function updateMeasurement() {
   const h = parseFloat(document.getElementById('upd-height').value);
 
   if (!w || !h || w <= 0 || h <= 0) {
+    playSound(SOUNDS.updateError);
     showCustomAlert('Por favor ingresa un peso y talla válidos.', 'error');
     return;
   }
@@ -30,6 +31,8 @@ async function updateMeasurement() {
   const cat = getBMICat(bmi);
   const last = appState.measurements?.[appState.measurements.length - 1];
   const wasNormal = last && last.cat === 'normal';
+
+  playCatSound(cat.key);
 
   // Guardar nueva medición
   appState.measurements.push({

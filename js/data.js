@@ -168,3 +168,35 @@ const TIPS = [
   "Guarda los dulces para ocasiones especiales ",
   "Respirar profundo te ayuda a relajarte "
 ];
+
+const SOUNDS = {
+  underweight: new Audio('./sonidos/Peso_Bajo.mp3'),
+  normal: new Audio('./sonidos/peso_normal.mp3'),
+  overweight: new Audio('./sonidos/Sobre_peso.mp3'),
+  obese: new Audio('./sonidos/Obesidad.mp3'),
+  saveDiet: new Audio('./sonidos/Guardar_mi_dieta.mp3'),
+  updateError: new Audio('./sonidos/Error_al_actualizar_medidas.mp3'),
+  didIt: [
+    new Audio('./sonidos/Ya_lo_hice1.mp3'),
+    new Audio('./sonidos/Ya_lo_hice2.mp3'),
+    new Audio('./sonidos/Ya_lo_hice3.mp3'),
+    new Audio('./sonidos/Ya_lo_hice4.mp3')
+  ]
+};
+
+function playSound(audio) {
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play().catch(() => { /* el navegador puede bloquear el autoplay */ });
+}
+
+function playCatSound(catKey) {
+  playSound(SOUNDS[catKey]);
+}
+
+// count = número de vez que se completa un ejercicio hoy (1ra, 2da, 3ra...)
+// cicla Ya_lo_hice1 -> 2 -> 3 -> 4 -> 1 -> ...
+function playDidItSound(count) {
+  const list = SOUNDS.didIt;
+  playSound(list[(count - 1) % list.length]);
+}

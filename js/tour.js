@@ -168,23 +168,37 @@ function positionTourAround(el) {
   spotlight.style.width = `${rect.width + pad * 2}px`;
   spotlight.style.height = `${rect.height + pad * 2}px`;
 
-  const mascotSpace = window.innerWidth <= 480 ? 0 : 84; // en pantallas muy angostas se apila arriba
+  const isNarrow = window.innerWidth <= 480;
+  const mascotSpace = isNarrow ? 0 : 84; // en pantallas angostas la mascota se apila arriba, no al lado
   const ttWidth = Math.min(260, window.innerWidth - 24 - mascotSpace);
   const wrapWidth = ttWidth + mascotSpace;
-  let top = rect.bottom + 16;
 
-  if (top + 160 > window.innerHeight) {
-    top = Math.max(12, rect.top - 160);
-  }
-
-  let left = rect.left + rect.width / 2 - wrapWidth / 2;
-  left = Math.max(12, Math.min(left, window.innerWidth - wrapWidth - 12));
-
-  tooltipWrap.style.top = `${top}px`;
-  tooltipWrap.style.left = `${left}px`;
   tooltipWrap.style.flexDirection = mascotSpace ? 'row' : 'column';
   tooltipWrap.style.alignItems = mascotSpace ? 'flex-end' : 'center';
   tooltipWrap.querySelector('.tour-tooltip').style.width = `${ttWidth}px`;
+
+  // Ocultar mientras medimos, para no mostrar un salto de posición
+  tooltipWrap.style.visibility = 'hidden';
+  tooltipWrap.style.top = '0px';
+  tooltipWrap.style.left = '0px';
+
+  requestAnimationFrame(() => {
+    const wrapRect = tooltipWrap.getBoundingClientRect();
+    const margin = 12;
+
+    let top = rect.bottom + 16;
+    if (top + wrapRect.height + margin > window.innerHeight) {
+      top = rect.top - wrapRect.height - 16;
+    }
+    top = Math.max(margin, Math.min(top, window.innerHeight - wrapRect.height - margin));
+
+    let left = rect.left + rect.width / 2 - wrapWidth / 2;
+    left = Math.max(margin, Math.min(left, window.innerWidth - wrapWidth - margin));
+
+    tooltipWrap.style.top = `${top}px`;
+    tooltipWrap.style.left = `${left}px`;
+    tooltipWrap.style.visibility = 'visible';
+  });
 }
 
 function repositionTour() {

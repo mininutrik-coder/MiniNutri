@@ -151,5 +151,20 @@ const TIPS = [
   "Dormir bien ayuda a tu cuerpo a crecer ",
   "¡El ejercicio es más divertido en equipo! ",
   "Menos pantallas, más movimiento ",
-  "Una fruta al día es un gran hábito "
+  "Una fruta al día es un gran hábito ",
+  "Lávate las manos antes de comer ",
+  "Cepíllate los dientes después de cada comida ",
+  "Elige agua en vez de refresco ",
+  "Jugar afuera es una gran forma de ejercitarte ",
+  "Comer en familia hace la comida más rica ",
+  "Prueba un alimento nuevo esta semana ",
+  "Estirar tu cuerpo antes de jugar te cuida ",
+  "Las porciones pequeñas y variadas son ideales ",
+  "Tomar el sol un rato te da energía ",
+  "Pide ayuda a un adulto para leer las etiquetas ",
+  "Descansa un poco entre juego y juego ",
+  "Sonreír y quererte también es salud ",
+  "Camina en vez de usar el carrito cuando puedas ",
+  "Guarda los dulces para ocasiones especiales ",
+  "Respirar profundo te ayuda a relajarte "
 ];

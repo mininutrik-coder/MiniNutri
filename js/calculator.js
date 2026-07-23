@@ -31,6 +31,22 @@ function loadChildDataIntoCalculator() {
   window._calcWeight = parseFloat(weight) || 0;
   window._calcHeight = parseFloat(height) || 0;
   window._calcAge = parseInt(age) || 0;
+
+  renderPlanActionButton();
+}
+
+// Un solo botón que cambia según si ya se eligió una dieta o no
+function renderPlanActionButton() {
+  const btn = document.getElementById('btn-plan-action');
+  if (!btn) return;
+
+  if (appState.diet?.step === 'done') {
+    btn.textContent = 'Ver mi plan';
+    btn.onclick = goToPlan;
+  } else {
+    btn.textContent = 'Elegir dieta';
+    btn.onclick = goToChooseDiet;
+  }
 }
 
 function calcSelectGender(g) {
@@ -62,6 +78,7 @@ async function calcBMI() {
     : `${diff} del rango normal`;
 
   renderApexGauge(bmi, cat);
+  renderPlanActionButton();
 
   if (appState.child) {
     const last = appState.measurements[appState.measurements.length - 1];

@@ -305,8 +305,10 @@
       </div>
     </nav>
 
-    <!-- MENÚ MÓVIL -->
-    <div id="mobile-menu" class="mobile-menu hidden">
+    <!-- MENÚ MÓVIL (panel lateral) -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="toggleMobileMenu()"></div>
+    <div id="mobile-menu" class="mobile-menu">
+      <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Cerrar menú">✕</button>
       <button class="nav-btn w-full mb-6" onclick="showTab('calculator');toggleMobileMenu()"> Calcular IMC</button>
       <button class="nav-btn w-full mb-6" onclick="showTab('dashboard');toggleMobileMenu()"> Mi Plan</button>
       <button class="nav-btn w-full mb-6" onclick="showTab('progress');toggleMobileMenu()"> Progreso</button>
@@ -371,14 +373,13 @@
             </div>
           </div>
           <button class="btn btn-green w-full btn-lg" id="btn-calc-imc" onclick="calcBMI()"> Calcular mi IMC</button>
-          <button class="btn btn-outline w-full mt-12" id="btn-ver-mi-plan" onclick="goToPlan()">Ver mi plan</button>
 
           <div class="gauge-wrap result-hidden" id="gauge-result" style="display:none">
             <div id="apex-gauge"></div>
             <div class="gauge-category" id="gauge-cat" style="font-size:1.2rem;font-weight:800;margin-top:4px"></div>
             <div class="gauge-diff" id="gauge-diff"
               style="font-size:.9rem;color:#5B6E60;margin-top:4px;margin-bottom:8px"></div>
-            <button class="btn btn-green mt-16" id="btn-elegir-dieta-imc" onclick="goToChooseDiet()">Elegir dieta </button>
+            <button class="btn btn-green mt-16" id="btn-plan-action" onclick="goToChooseDiet()">Elegir dieta </button>
           </div>
         </div>
       </div>
@@ -484,19 +485,20 @@
 
     </div><!-- /app-content -->
 
-    <!-- BOTTOM NAV MÓVIL -->
-    <div class="bottom-nav">
-      <div class="bottom-nav-inner">
-        <button class="bnav-btn" onclick="showTab('calculator')" id="bnav-calculator"><span
-            class="bn-icon"></span>IMC</button>
-        <button class="bnav-btn" onclick="showTab('dashboard')" id="bnav-dashboard"><span class="bn-icon"></span>Mi
-          Plan</button>
-        <button class="bnav-btn" onclick="showTab('progress')" id="bnav-progress"><span
-            class="bn-icon"></span>Progreso</button>
-        <button class="bnav-btn" onclick="showTab('profile')" id="bnav-profile"><span
-            class="bn-icon"></span>Perfil</button>
+    <!-- FOOTER (visible en todas las pestañas de la app) -->
+    <footer class="app-footer">
+      <div class="app-footer-eyebrow">Proyecto académico</div>
+      <div class="app-footer-uni">Universidad Tecnológica de Sierra Hidalguense</div>
+      <div class="app-footer-degree">Licenciatura en Enfermería</div>
+      <div class="app-footer-credits">
+        <span>Ximena Ortiz García</span>
+        <span>Keymi Mercado Larios</span>
+        <span>Erick Jared Miguel Cruz</span>
+        <span>Brayan Alfonso de la Cruz López</span>
+        <span>Nayla Naranjo Solares</span>
       </div>
-    </div>
+      <div class="app-footer-copy">© 2026 MiniNutri. Hecho con cariño para familias saludables.</div>
+    </footer>
   </div><!-- /screen-app -->
 
   <!--  MASCOTA  -->

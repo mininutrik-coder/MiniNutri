@@ -56,6 +56,7 @@ async function updateMeasurement() {
   document.getElementById('dash-bmi').textContent = bmi.toFixed(1);
   document.getElementById('dash-cat').textContent = cat.label;
   renderDashboard(cat.key);
+  renderPlanActionButton();
 
   // Limpiar campos
   document.getElementById('upd-weight').value = '';

@@ -7,9 +7,11 @@
 const TOUR_STEPS = [
   {
     beforeShow: () => showTab('calculator'),
-    target: () => window.innerWidth <= 768 ? '#bnav-calculator' : '#tab-calculator',
+    target: () => window.innerWidth <= 768 ? '.hamburger' : '#tab-calculator',
     title: 'Calcula tu IMC',
-    text: 'Aquí calculas tu Índice de Masa Corporal con tu peso y talla más reciente.'
+    text: window.innerWidth <= 768
+      ? 'Toca este menú para moverte entre secciones. Empecemos por calcular tu IMC.'
+      : 'Aquí calculas tu Índice de Masa Corporal con tu peso y talla más reciente.'
   },
   {
     beforeShow: () => showTab('calculator'),
@@ -18,14 +20,8 @@ const TOUR_STEPS = [
     text: 'Presiona este botón para calcular tu IMC. Al terminar, verás un botón para elegir tu dieta.'
   },
   {
-    beforeShow: () => showTab('calculator'),
-    target: () => '#btn-ver-mi-plan',
-    title: 'Ver mi plan',
-    text: 'Este botón te lleva directo a la pestaña Mi Plan.'
-  },
-  {
     beforeShow: () => showTab('dashboard'),
-    target: () => window.innerWidth <= 768 ? '#bnav-dashboard' : '#tab-dashboard',
+    target: () => window.innerWidth <= 768 ? '.hamburger' : '#tab-dashboard',
     title: 'Mi Plan',
     text: 'Elige tu dieta paso a paso y revisa los ejercicios recomendados para ti.'
   },
@@ -37,13 +33,13 @@ const TOUR_STEPS = [
   },
   {
     beforeShow: () => showTab('progress'),
-    target: () => window.innerWidth <= 768 ? '#bnav-progress' : '#tab-progress',
+    target: () => window.innerWidth <= 768 ? '.hamburger' : '#tab-progress',
     title: 'Progreso',
     text: 'Aquí puedes ver cómo ha cambiado tu IMC a lo largo del tiempo.'
   },
   {
     beforeShow: () => showTab('profile'),
-    target: () => window.innerWidth <= 768 ? '#bnav-profile' : '#tab-profile',
+    target: () => window.innerWidth <= 768 ? '.hamburger' : '#tab-profile',
     title: 'Perfil',
     text: 'Aquí ves tus logros y estadísticas.'
   },

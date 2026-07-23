@@ -62,9 +62,7 @@ function showTab(name) {
   tabs.forEach(t => {
     document.getElementById('tab-content-' + t).classList.toggle('hidden', t !== name);
     const btn = document.getElementById('tab-' + t);
-    const bBtn = document.getElementById('bnav-' + t);
     if (btn) btn.classList.toggle('active', t === name);
-    if (bBtn) bBtn.classList.toggle('active', t === name);
   });
   if (name === 'progress') renderProgress();
   if (name === 'profile') renderProfile();
@@ -72,5 +70,6 @@ function showTab(name) {
 }
 
 function toggleMobileMenu() {
-  document.getElementById('mobile-menu').classList.toggle('hidden');
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('mobile-menu-backdrop').classList.toggle('open');
 }

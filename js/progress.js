@@ -44,6 +44,14 @@ function renderChart() {
   const data = appState.measurements.map(m => parseFloat(m.bmi));
   const colors = appState.measurements.map(m => getBMICat(parseFloat(m.bmi)).color);
 
+  // Escala dinámica para que la línea nunca se salga de la gráfica,
+  // sin importar qué tan alto o bajo sea el IMC (ej. obesidad severa).
+  const minVal = Math.min(...data);
+  const maxVal = Math.max(...data);
+  const pad = Math.max(2, (maxVal - minVal) * 0.15);
+  const yMin = Math.max(0, Math.floor(minVal - pad));
+  const yMax = Math.ceil(maxVal + pad);
+
   bmiChartInstance = new Chart(ctx, {
     type: 'line',
     data: {
@@ -81,8 +89,8 @@ function renderChart() {
       },
       scales: {
         y: {
-          min: 12,
-          max: 42,
+          min: yMin,
+          max: yMax,
           grid: { color: 'rgba(76,175,80,0.08)' },
           ticks: { font: { family: 'Nunito', weight: '700', size: 12 } }
         },

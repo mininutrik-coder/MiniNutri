@@ -266,7 +266,15 @@
   color: var(--text);
   box-shadow: var(--shadow);
   position: relative;
-  animation: fadeIn .3s ease;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.mascot-bubble-hidden {
+  opacity: 0;
+  transform: translateY(6px) scale(.96);
+  pointer-events: none;
 }
 
 .mascot-bubble::after {
@@ -586,4 +594,51 @@
 
 .tour-btn-next:hover {
   background: var(--green-dark);
+}
+
+/*  FOOTER DE LA APP (visible en todas las pestañas)  */
+.app-footer {
+  width: 100%;
+  padding: 28px 24px 20px;
+  text-align: center;
+  background: var(--footer-bg);
+}
+
+.app-footer-eyebrow {
+  color: #9FD3AE;
+  font-weight: 800;
+  font-size: .78rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.app-footer-uni {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 800;
+  font-size: .95rem;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.app-footer-degree {
+  font-size: .82rem;
+  color: #B9D4C0;
+  margin-bottom: 12px;
+}
+
+.app-footer-credits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+  color: #B9D4C0;
+  font-size: .78rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.app-footer-copy {
+  font-size: .75rem;
+  color: #8FB299;
 }

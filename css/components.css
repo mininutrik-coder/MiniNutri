@@ -46,16 +46,16 @@
 }
 
 .btn-primary {
-  background: var(--white);
-  color: var(--green-dark);
+  background: var(--green-mid);
+  color: var(--white);
   border: none;
-  padding: 16px 40px;
+  padding: 16px 34px;
   border-radius: 99px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.1rem;
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.02rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 22px rgba(61, 174, 107, 0.32);
   transition: all .25s;
   display: inline-flex;
   align-items: center;
@@ -63,8 +63,9 @@
 }
 
 .btn-primary:hover {
+  background: var(--green-dark);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 14px 28px rgba(61, 174, 107, 0.38);
 }
 
 /* FORMS*/
@@ -84,12 +85,12 @@
 .form-group select {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #E8F5E9;
+  border: 2px solid #E7F2E5;
   border-radius: var(--radius);
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
   color: var(--text);
-  background: #FAFFFE;
+  background: #FAFCF8;
   transition: border-color .2s;
   outline: none;
 }
@@ -107,9 +108,9 @@
 .gender-btn {
   flex: 1;
   padding: 14px;
-  border: 2px solid #E8F5E9;
+  border: 2px solid #E7F2E5;
   border-radius: var(--radius);
-  background: #FAFFFE;
+  background: #FAFCF8;
   cursor: pointer;
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
@@ -173,7 +174,7 @@
 
 /* ACTIVITY CARDS  */
 .activity-card {
-  border: 2px solid #E8F5E9;
+  border: 2px solid #E7F2E5;
   border-radius: var(--radius);
   padding: 16px;
   margin-bottom: 12px;
@@ -348,6 +349,20 @@
   margin-bottom: 12px;
 }
 
+.alert-icon-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
 .modal-actions {
   display: flex;
   gap: 12px;
@@ -397,23 +412,23 @@
 }
 
 .cat-normal {
-  background: #E8F5E9;
-  color: #2E7D32;
+  background: #EAF5EC;
+  color: #2F6E4A;
 }
 
 .cat-underweight {
-  background: #E3F2FD;
-  color: #1565C0;
+  background: #EAF2FB;
+  color: #2E5F8A;
 }
 
 .cat-overweight {
-  background: #FFF3E0;
-  color: #E65100;
+  background: #FDF2ED;
+  color: #C1512E;
 }
 
 .cat-obese {
-  background: #FFEBEE;
-  color: #B71C1C;
+  background: #FBEAE7;
+  color: #A33B30;
 }
 
 /*  STEP INDICATOR  */

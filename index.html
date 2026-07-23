@@ -30,26 +30,123 @@
   </div>
 
   <!--  LANDING  -->
-  <div id="screen-landing" class="screen">
-    <span class="landing-badge">Diseñado para niños de 5 a 9 años</span>
-    <h1 class="landing-title">Mini<span>Nutri</span> <img src="./assets/Kiwi.png" alt="kiwi"
-        style="width:60px;height:60px;object-fit:contain;vertical-align:middle"></h1>
-    <p class="landing-sub">Aprende a comer rico y a moverte con tu amigo Mini. ¡Divertido y saludable!</p>
-    <div class="landing-cards">
-      <div class="landing-card">
-        <img src="./assets/Ensalda_verde.png" alt="Alimentación sana" class="landing-icon">
-        <p>Alimentación sana</p>
+  <div id="screen-landing" class="screen landing-screen">
+
+    <!-- HEADER -->
+    <header class="landing-header">
+      <div class="nav-logo"><span class="nav-logo-dot"></span>MiniNutri</div>
+      <nav class="landing-nav">
+        <a href="#landing-inicio">Inicio</a>
+        <a href="#landing-quienes-somos">Quiénes somos</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="landing-inicio" class="landing-hero">
+      <div class="landing-hero-grid">
+        <div>
+          <span class="landing-badge">Hecho para niños y niñas de 5 a 9 años</span>
+          <h1 class="landing-title">Mini<span>Nutri</span></h1>
+          <h1 class="landing-title landing-title-sub">tu amigo para crecer sano</h1>
+          <p class="landing-desc">Aprende a comer rico y a moverte jugando junto a Mini, el kiwi. ¡Divertido, seguro
+            y pensado para ti!</p>
+          <div class="landing-cta-row">
+            <button class="btn-primary" onclick="showScreen('login')">¡Comenzar ahora!</button>
+            <a href="#landing-quienes-somos" class="btn-ghost">Conócenos</a>
+          </div>
+        </div>
+        <img src="./assets/Kiwi.png" alt="Kiwi mascota MiniNutri" class="landing-hero-img">
       </div>
-      <div class="landing-card">
-        <img src="./assets/Ejercicio.png" alt="Ejercicio divertido" class="landing-icon">
-        <p>Ejercicio divertido</p>
+      <div class="landing-feature-grid">
+        <div class="landing-feature-card feature-green">
+          <img src="./assets/Ensalda_verde.png" alt="Alimentación sana" class="landing-icon">
+          <p>Alimentación sana</p>
+        </div>
+        <div class="landing-feature-card feature-orange">
+          <img src="./assets/Ejercicio.png" alt="Ejercicio divertido" class="landing-icon">
+          <p>Ejercicio divertido</p>
+        </div>
+        <div class="landing-feature-card feature-yellow">
+          <img src="./assets/Regla.png" alt="Calcula tu IMC" class="landing-icon">
+          <p>Calcula tu IMC</p>
+        </div>
       </div>
-      <div class="landing-card">
-        <img src="./assets/Regla.png" alt="Calcula tu IMC" class="landing-icon">
-        <p>Calcula tu IMC</p>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section id="landing-quienes-somos" class="landing-about">
+      <div class="landing-about-grid">
+        <div>
+          <span class="landing-eyebrow">Quiénes somos</span>
+          <h2 class="landing-about-title">Un compañero saludable, pensado para los más pequeños</h2>
+          <p class="landing-about-text">MiniNutri nació para ayudar a niñas y niños a entender su cuerpo y sus
+            hábitos de forma simple, divertida y acompañada siempre por un adulto responsable.</p>
+          <p class="landing-about-text">Junto a Mini, el kiwi, cada niño calcula su IMC, recibe un plan alimenticio
+            pensado para su edad y desbloquea retos de actividad física, siempre con la supervisión de sus papás.</p>
+          <div class="landing-stats">
+            <div class="landing-stat">
+              <div class="landing-stat-num">100%</div>
+              <div class="landing-stat-label">Supervisado por adultos</div>
+            </div>
+            <div class="landing-stat">
+              <div class="landing-stat-num">5-9</div>
+              <div class="landing-stat-label">Años, edad ideal</div>
+            </div>
+            <div class="landing-stat">
+              <div class="landing-stat-num">+1</div>
+              <div class="landing-stat-label">Amigo saludable</div>
+            </div>
+          </div>
+        </div>
+        <div class="landing-about-img">
+          <img src="./assets/Kiwi.png" alt="Mini, la mascota de MiniNutri">
+        </div>
       </div>
-    </div>
-    <button class="btn-primary" onclick="showScreen('login')">¡Comenzar ahora!</button>
+
+      <div class="landing-about-cards">
+        <div class="landing-about-card">
+          <div class="landing-about-card-icon icon-green"></div>
+          <div class="landing-about-card-title">Aprender jugando</div>
+          <p>Retos, colores y una mascota amigable convierten la nutrición en un juego.</p>
+        </div>
+        <div class="landing-about-card">
+          <div class="landing-about-card-icon icon-orange"></div>
+          <div class="landing-about-card-title">Seguro y acompañado</div>
+          <p>Papá o mamá crea la cuenta y siempre puede ver el progreso de su hijo/a.</p>
+        </div>
+        <div class="landing-about-card">
+          <div class="landing-about-card-icon icon-yellow"></div>
+          <div class="landing-about-card-title">Basado en criterios reales</div>
+          <p>El cálculo de IMC y las recomendaciones siguen tablas de crecimiento infantil.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="landing-footer">
+      <div class="landing-footer-grid">
+        <div>
+          <div class="landing-footer-brand">MiniNutri</div>
+          <p class="landing-footer-text">Tu compañero de nutrición saludable, hecho con cariño para niñas y niños.</p>
+        </div>
+        <div>
+          <div class="landing-footer-heading">Navegación</div>
+          <div class="landing-footer-links">
+            <a href="#landing-inicio">Inicio</a>
+            <a href="#landing-quienes-somos">Quiénes somos</a>
+            <a onclick="showScreen('login')">Iniciar sesión</a>
+          </div>
+        </div>
+        <div>
+          <div class="landing-footer-heading">Para familias</div>
+          <div class="landing-footer-links">
+            <span>Aviso de privacidad</span>
+            <span>Contacto</span>
+          </div>
+        </div>
+      </div>
+      <p class="landing-footer-copy">© 2026 MiniNutri. Hecho con cariño para familias saludables.</p>
+    </footer>
   </div>
 
   <!--  LOGIN  -->
@@ -66,11 +163,11 @@
         <div id="login-alert"></div>
         <div class="form-group">
           <label>Correo electrónico</label>
-          <input type="email" id="login-email" placeholder="correo@ejemplo.com">
+          <input type="email" id="login-email" placeholder="correo@ejemplo.com" onkeydown="if(event.key==='Enter') doLogin()">
         </div>
         <div class="form-group">
           <label>Contraseña</label>
-          <input type="password" id="login-pass" placeholder="">
+          <input type="password" id="login-pass" placeholder="" onkeydown="if(event.key==='Enter') doLogin()">
         </div>
         <button class="btn btn-green w-full mt-12" onclick="doLogin()">Iniciar sesión </button>
         <p class="auth-link">¿No tienes cuenta? <a onclick="showScreen('register')">Regístrate aquí</a></p>
@@ -172,16 +269,18 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-      <div class="nav-logo">MiniNutri</div>
+      <div class="nav-logo"><span class="nav-logo-dot"></span>MiniNutri</div>
       <div class="nav-links">
-        <button class="nav-btn" onclick="showTab('calculator')" id="tab-calculator"> IMC</button>
-        <button class="nav-btn" onclick="showTab('dashboard')" id="tab-dashboard"> Mi Plan</button>
-        <button class="nav-btn" onclick="showTab('progress')" id="tab-progress"> Progreso</button>
-        <button class="nav-btn" onclick="showTab('profile')" id="tab-profile"> Perfil</button>
-        <button class="nav-btn nav-logout" onclick="doLogout()">Salir</button>
+        <button class="nav-btn" onclick="showTab('calculator')" id="tab-calculator">IMC</button>
+        <button class="nav-btn" onclick="showTab('dashboard')" id="tab-dashboard">Mi Plan</button>
+        <button class="nav-btn" onclick="showTab('progress')" id="tab-progress">Progreso</button>
+        <button class="nav-btn" onclick="showTab('profile')" id="tab-profile">Perfil</button>
       </div>
-      <div class="hamburger" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
+      <div class="nav-actions">
+        <button class="nav-logout" onclick="doLogout()">Salir</button>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </div>
       </div>
     </nav>
 
@@ -205,11 +304,11 @@
               <label>Género</label>
               <div id="calc-gender-display" style="
  padding:13px 16px;
- border:2px solid #E8F5E9;
+ border:2px solid #E7F2E5;
  border-radius:20px;
- background:#F1F8E9;
+ background:#F2F8F0;
  font-weight:700;
- color:#2E7D32;
+ color:#2F6E4A;
  font-size:1rem;
  "></div>
             </div>
@@ -217,11 +316,11 @@
               <label>Peso (kg)</label>
               <div id="calc-weight-display" style="
  padding:13px 16px;
- border:2px solid #E8F5E9;
+ border:2px solid #E7F2E5;
  border-radius:20px;
- background:#F1F8E9;
+ background:#F2F8F0;
  font-weight:700;
- color:#2E7D32;
+ color:#2F6E4A;
  font-size:1rem;
  "></div>
             </div>
@@ -229,11 +328,11 @@
               <label>Talla (cm)</label>
               <div id="calc-height-display" style="
  padding:13px 16px;
- border:2px solid #E8F5E9;
+ border:2px solid #E7F2E5;
  border-radius:20px;
- background:#F1F8E9;
+ background:#F2F8F0;
  font-weight:700;
- color:#2E7D32;
+ color:#2F6E4A;
  font-size:1rem;
  "></div>
             </div>
@@ -241,23 +340,24 @@
               <label>Edad</label>
               <div id="calc-age-display" style="
  padding:13px 16px;
- border:2px solid #E8F5E9;
+ border:2px solid #E7F2E5;
  border-radius:20px;
- background:#F1F8E9;
+ background:#F2F8F0;
  font-weight:700;
- color:#2E7D32;
+ color:#2F6E4A;
  font-size:1rem;
  "></div>
             </div>
           </div>
           <button class="btn btn-green w-full btn-lg" onclick="calcBMI()"> Calcular mi IMC</button>
+          <button class="btn btn-outline w-full mt-12" onclick="goToPlan()">Ver mi plan</button>
 
           <div class="gauge-wrap result-hidden" id="gauge-result" style="display:none">
             <div id="apex-gauge"></div>
             <div class="gauge-category" id="gauge-cat" style="font-size:1.2rem;font-weight:800;margin-top:4px"></div>
             <div class="gauge-diff" id="gauge-diff"
-              style="font-size:.9rem;color:#4E6B52;margin-top:4px;margin-bottom:8px"></div>
-            <button class="btn btn-green mt-16" onclick="goToPlan()">Ver mi plan personalizado </button>
+              style="font-size:.9rem;color:#5B6E60;margin-top:4px;margin-bottom:8px"></div>
+            <button class="btn btn-green mt-16" onclick="goToChooseDiet()">Elegir dieta </button>
           </div>
         </div>
       </div>
@@ -274,31 +374,29 @@
             <div class="bmi-cat" id="dash-cat">IMC actual</div>
           </div>
         </div>
-        <!--
- <div class="two-col">
- <div class="panel-card">
- <div class="panel-title"> Mis Dietas</div>
- <div id="diet-cards"></div>
- </div>
- <div class="panel-card">
- <div class="panel-title"> Mis Ejercicios</div>
- <div id="exercise-cards"></div>
- </div>
- </div>
- <div class="reco-box">
- <div class="section-title"> Recomendaciones</div>
- <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Se recomienda hacer ejercicio
- entre las 7-9am o las 4-6pm para mayor beneficio.</span></div>
- <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Si te sientes mareado,
- siéntate, toma agua y descansa unos minutos.</span></div>
- <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Siempre realiza
- ejercicio con supervisión de un adulto de confianza.</span></div>
- <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">No hagas ejercicio con el
- estómago vacío. Come algo ligero antes.</span></div>
- <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Dormir bien también es parte
- de una vida saludable. ¡8 horas mínimo!</span></div>
- </div>
- -->
+        <div class="two-col">
+          <div class="panel-card">
+            <div class="panel-title"> Mis Dietas</div>
+            <div id="diet-cards"></div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-title"> Mis Ejercicios</div>
+            <div id="exercise-cards"></div>
+          </div>
+        </div>
+        <div class="reco-box">
+          <div class="section-title"> Recomendaciones</div>
+          <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Se recomienda hacer ejercicio
+              entre las 7-9am o las 4-6pm para mayor beneficio.</span></div>
+          <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Si te sientes mareado,
+              siéntate, toma agua y descansa unos minutos.</span></div>
+          <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Siempre realiza
+              ejercicio con supervisión de un adulto de confianza.</span></div>
+          <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">No hagas ejercicio con el
+              estómago vacío. Come algo ligero antes.</span></div>
+          <div class="reco-item"><span class="reco-icon"></span><span class="reco-text">Dormir bien también es parte
+              de una vida saludable. ¡8 horas mínimo!</span></div>
+        </div>
       </div>
 
       <!-- TAB: PROGRESO -->
@@ -415,13 +513,24 @@
     </div>
   </div>
 
+  <!--  MODAL ALERTA  -->
+  <div class="modal-overlay" id="custom-alert-modal">
+    <div class="modal text-center alert-modal" id="custom-alert-box">
+      <div class="modal-emoji" id="custom-alert-icon"></div>
+      <h3 id="custom-alert-title">Aviso</h3>
+      <p id="custom-alert-msg"></p>
+      <button class="btn btn-green w-full mt-16" onclick="closeCustomAlert()">Entendido</button>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <!-- ApexCharts (gauge IMC) -->
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-  <!-- JS Modular (Supabase desconectado temporalmente) -->
+  <!-- JS Modular -->
   <script src="js/data.js"></script>
   <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/calculator.js"></script>
   <script src="js/dashboard.js"></script>

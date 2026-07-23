@@ -1,7 +1,7 @@
 /* =============================================
    APP.JS — Estado global e inicialización
-   MODO SIN LOGIN: entra directo con datos de
-   prueba locales (Supabase desconectado)
+   La sesión se restaura solo si hay un token real
+   guardado de un login/registro previo contra la API.
    ============================================= */
 
 let appState = {
@@ -12,7 +12,8 @@ let appState = {
   lastActiveDay: null,
   lastMeasureDate: null,
   regGender: null,
-  streak: 0
+  streak: 0,
+  diet: { step: 'idle', nivelCosto: null, dieta: null, selections: {} }
 };
 
 window.addEventListener('load', () => {
@@ -20,31 +21,20 @@ window.addEventListener('load', () => {
   setupModalListeners();
 
   setTimeout(() => {
-    // *** MODO SIN LOGIN ***
-    // Si no hay child guardado, se crea uno de prueba automáticamente
-    if (!appState.child) {
-      appState.user = { id: 'local-demo', name: 'Demo' };
-      appState.child = {
-        id: 'child-demo',
-        name: 'Azael',
-        age: 7,
-        gender: 'male',
-        lastWeight: 25,
-        lastHeight: 122
-      };
-      appState.measurements = [{
-        date: new Date().toISOString(),
-        weight: 25,
-        height: 122,
-        bmi: calcBMIVal(25, 122).toFixed(2),
-        cat: getBMICat(calcBMIVal(25, 122)).key
-      }];
-      saveState();
-    }
+    const hasSession = !!localStorage.getItem('mn_token') && !!appState.child;
 
-    showScreen('app');
-    refreshApp();
-    checkTwoWeekReminder();
+    if (hasSession) {
+      showScreen('app');
+      refreshApp();
+      checkTwoWeekReminder();
+    } else {
+      localStorage.removeItem('mn_token');
+      appState.user = null;
+      appState.child = null;
+      appState.measurements = [];
+      saveState();
+      showScreen('landing');
+    }
   }, 1200);
 });
 

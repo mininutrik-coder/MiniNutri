@@ -26,7 +26,7 @@ function submitModalUpdate() {
   const h = parseFloat(document.getElementById('modal-height').value);
 
   if (!w || !h || w <= 0 || h <= 0) {
-    alert('Por favor ingresa un peso y talla válidos.');
+    showCustomAlert('Por favor ingresa un peso y talla válidos.', 'error');
     return;
   }
 
@@ -69,6 +69,30 @@ function showCelebration(msg) {
 function closeCelebrate() {
   document.getElementById('celebrate-modal').classList.remove('open');
   showTab('dashboard');
+}
+
+const ALERT_STYLES = {
+  error: { symbol: '!', title: 'Ups...', color: 'var(--red)' },
+  warning: { symbol: '!', title: 'Atención', color: 'var(--orange)' },
+  info: { symbol: 'i', title: 'Aviso', color: 'var(--green-dark)' }
+};
+
+function showCustomAlert(message, type = 'info', title) {
+  const style = ALERT_STYLES[type] || ALERT_STYLES.info;
+  const titleEl = document.getElementById('custom-alert-title');
+  const iconEl = document.getElementById('custom-alert-icon');
+
+  iconEl.className = 'alert-icon-badge';
+  iconEl.textContent = style.symbol;
+  iconEl.style.background = style.color;
+  titleEl.textContent = title || style.title;
+  titleEl.style.color = style.color;
+  document.getElementById('custom-alert-msg').textContent = message;
+  document.getElementById('custom-alert-modal').classList.add('open');
+}
+
+function closeCustomAlert() {
+  document.getElementById('custom-alert-modal').classList.remove('open');
 }
 
 function launchConfetti() {

@@ -1,5 +1,31 @@
 /* RESPONSIVIDAD */
 
+@media (max-width: 900px) {
+  .landing-hero-grid,
+  .landing-about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-hero-img {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .landing-about-img {
+    height: 240px;
+    order: -1;
+  }
+
+  .landing-feature-grid,
+  .landing-about-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .landing-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
 
   /* Layout */
@@ -8,7 +34,7 @@
   }
 
   .app-content {
-    padding: 16px 14px 80px;
+    padding: 16px 14px 104px;
   }
 
   .bottom-nav {
@@ -33,16 +59,43 @@
     text-align: center;
   }
 
-  /* Mascota */
+  /* Selector de opciones (género, líquidos, alimentos) */
+  .gender-toggle {
+    flex-wrap: wrap;
+  }
+
+  .gender-btn {
+    flex: 1 1 calc(50% - 6px);
+  }
+
+  /* Mascota: no debe bloquear botones ni verse encimada */
   .mascot-wrap {
     bottom: 80px;
     right: 12px;
+    max-width: calc(100vw - 24px);
   }
 
   .mascot-body {
     width: 54px;
     height: 54px;
     font-size: 1.6rem;
+  }
+
+  .mascot-bubble {
+    max-width: 160px;
+    font-size: .78rem;
+    padding: 8px 12px;
+    pointer-events: none;
+  }
+
+  /* Tabla de historial: scroll horizontal en vez de comprimir columnas */
+  .progress-table {
+    min-width: 560px;
+  }
+
+  .progress-table th,
+  .progress-table td {
+    white-space: nowrap;
   }
 }
 
@@ -65,13 +118,18 @@
     font-size: 2.2rem;
   }
 
-  .landing-cards {
-    gap: 10px;
+  .landing-feature-grid,
+  .landing-about-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .landing-card {
-    min-width: 100px;
-    padding: 18px 14px;
+  .landing-header {
+    padding: 14px 18px;
+  }
+
+  .landing-hero {
+    padding: 40px 18px 36px;
   }
 
   .gauge-bmi {

@@ -1,21 +1,25 @@
 :root {
-  --green: #4CAF50;
-  --green-dark: #2E7D32;
-  --green-light: #F1F8E9;
-  --green-mid: #81C784;
-  --orange: #FF8F00;
-  --orange-light: #FFF3E0;
-  --blue: #1E88E5;
-  --blue-light: #E3F2FD;
-  --red: #E53935;
-  --red-light: #FFEBEE;
+  --green: #4F9D6E;
+  --green-dark: #2F6E4A;
+  --green-light: #EAF5EC;
+  --green-mid: #3DAE6B;
+  --orange: #FF7F59;
+  --orange-light: #FDF2ED;
+  --yellow: #F6C453;
+  --yellow-light: #FEF7E6;
+  --blue: #4A90D9;
+  --blue-light: #EAF2FB;
+  --red: #E2574C;
+  --red-light: #FBEAE7;
   --white: #FFFFFF;
-  --gray: #78909C;
-  --gray-light: #ECEFF1;
-  --text: #1B5E20;
-  --text-soft: #4E6B52;
-  --shadow: 0 8px 32px rgba(46, 125, 50, 0.13);
-  --shadow-lg: 0 16px 48px rgba(46, 125, 50, 0.18);
+  --gray: #8AA092;
+  --gray-light: #F0F7EF;
+  --text: #2F3E33;
+  --text-soft: #5B6E60;
+  --bg: #FBFAF5;
+  --footer-bg: #1F4A32;
+  --shadow: 0 8px 32px rgba(47, 110, 74, 0.12);
+  --shadow-lg: 0 16px 48px rgba(47, 110, 74, 0.18);
   --radius: 20px;
   --radius-lg: 28px;
 }
@@ -34,7 +38,7 @@ html {
 
 body {
   font-family: 'Nunito', sans-serif;
-  background: var(--green-light);
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;

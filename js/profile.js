@@ -17,21 +17,19 @@ function renderProfile() {
   updateStats();
 }
 
-function updateMeasurement() {
+async function updateMeasurement() {
   const w = parseFloat(document.getElementById('upd-weight').value);
   const h = parseFloat(document.getElementById('upd-height').value);
 
   if (!w || !h || w <= 0 || h <= 0) {
-    alert('Por favor ingresa un peso y talla válidos.');
+    showCustomAlert('Por favor ingresa un peso y talla válidos.', 'error');
     return;
   }
 
   const bmi = calcBMIVal(w, h);
   const cat = getBMICat(bmi);
   const last = appState.measurements?.[appState.measurements.length - 1];
-
-  // Detectar si mejoró de categoría
-  const improved = last && getCatLevel(cat.key) < getCatLevel(last.cat);
+  const wasNormal = last && last.cat === 'normal';
 
   // Guardar nueva medición
   appState.measurements.push({
@@ -42,7 +40,15 @@ function updateMeasurement() {
     cat: cat.key
   });
   appState.lastMeasureDate = new Date().toISOString();
+  if (appState.child) {
+    appState.child.lastWeight = w;
+    appState.child.lastHeight = h;
+  }
   saveState();
+
+  if (appState.child?.id) {
+    try { await API.addMeasurement(appState.child.id, w, h); } catch (e) { /* se queda guardado localmente */ }
+  }
 
   // Actualizar UI
   renderProfile();
@@ -55,9 +61,14 @@ function updateMeasurement() {
   document.getElementById('upd-weight').value = '';
   document.getElementById('upd-height').value = '';
 
-  if (improved) {
-    showCelebration(`¡Pasaste a: ${cat.label}! `);
+  if (cat.key === 'normal') {
+    if (!wasNormal) {
+      showCelebration(`¡Llegaste a un peso normal! `);
+    } else {
+      setMascotMsg(`IMC actualizado: ${bmi.toFixed(1)} — ${cat.label} `, true);
+    }
   } else {
-    setMascotMsg(`IMC actualizado: ${bmi.toFixed(1)} — ${cat.label} `, true);
+    showCustomAlert(`Tu nuevo IMC es ${bmi.toFixed(1)} (${cat.label}). Te recomendamos consultar a un adulto o profesional de salud.`, 'warning');
+    setMascotMsg(`Tu IMC cambió a ${cat.label}. Revisa tu plan en Mi Plan.`, true);
   }
 }

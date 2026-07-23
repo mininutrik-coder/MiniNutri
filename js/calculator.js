@@ -37,13 +37,13 @@ function calcSelectGender(g) {
   calcGender = g;
 }
 
-function calcBMI() {
+async function calcBMI() {
   // Usar valores guardados desde loadChildDataIntoCalculator
   const w = window._calcWeight;
   const h = window._calcHeight;
 
   if (!w || !h || w <= 0 || h <= 0) {
-    alert('No se encontraron datos de medición. Por favor actualiza tus medidas en Perfil.');
+    showCustomAlert('No se encontraron datos de medición. Por favor actualiza tus medidas en Perfil.', 'error');
     return;
   }
 
@@ -74,6 +74,10 @@ function calcBMI() {
         cat: cat.key
       });
       saveState();
+
+      if (appState.child.id) {
+        try { await API.addMeasurement(appState.child.id, w, h); } catch (e) { /* se queda guardado localmente */ }
+      }
     }
     document.getElementById('dash-bmi').textContent = bmi.toFixed(1);
     document.getElementById('dash-cat').textContent = cat.label;
@@ -113,7 +117,7 @@ function renderApexGauge(bmi, cat) {
       radialBar: {
         startAngle: -135, endAngle: 135,
         track: {
-          background: '#E8F5E9', strokeWidth: '100%', margin: 4,
+          background: '#EAF5EC', strokeWidth: '100%', margin: 4,
           dropShadow: { enabled: true, top: 2, left: 0, blur: 8, opacity: 0.08 }
         },
         dataLabels: {
@@ -139,10 +143,10 @@ function renderApexGauge(bmi, cat) {
       gradient: {
         shade: 'light', type: 'horizontal', shadeIntensity: 0.15,
         colorStops: [
-          { offset: 0, color: '#1E88E5', opacity: 1 },
-          { offset: 30, color: '#4CAF50', opacity: 1 },
-          { offset: 65, color: '#FF8F00', opacity: 1 },
-          { offset: 100, color: '#E53935', opacity: 1 }
+          { offset: 0, color: '#4A90D9', opacity: 1 },
+          { offset: 30, color: '#4F9D6E', opacity: 1 },
+          { offset: 65, color: '#FF7F59', opacity: 1 },
+          { offset: 100, color: '#E2574C', opacity: 1 }
         ]
       }
     },
@@ -160,22 +164,31 @@ function renderApexGauge(bmi, cat) {
   labels.id = 'gauge-zone-labels';
   labels.style.cssText = `display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:4px;margin-bottom:12px;`;
   labels.innerHTML = `
- <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#1E88E5;font-family:Nunito,sans-serif">
- <span style="width:10px;height:10px;border-radius:50%;background:#1E88E5;display:inline-block"></span>Bajo peso
+ <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#2E5F8A;font-family:Nunito,sans-serif">
+ <span style="width:10px;height:10px;border-radius:50%;background:#4A90D9;display:inline-block"></span>Bajo peso
  </span>
- <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#2E7D32;font-family:Nunito,sans-serif">
- <span style="width:10px;height:10px;border-radius:50%;background:#4CAF50;display:inline-block"></span>Normal
+ <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#2F6E4A;font-family:Nunito,sans-serif">
+ <span style="width:10px;height:10px;border-radius:50%;background:#4F9D6E;display:inline-block"></span>Normal
  </span>
- <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#E65100;font-family:Nunito,sans-serif">
- <span style="width:10px;height:10px;border-radius:50%;background:#FF8F00;display:inline-block"></span>Sobrepeso
+ <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#C1512E;font-family:Nunito,sans-serif">
+ <span style="width:10px;height:10px;border-radius:50%;background:#FF7F59;display:inline-block"></span>Sobrepeso
  </span>
- <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#B71C1C;font-family:Nunito,sans-serif">
- <span style="width:10px;height:10px;border-radius:50%;background:#E53935;display:inline-block"></span>Obesidad
+ <span style="display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;color:#A33B30;font-family:Nunito,sans-serif">
+ <span style="width:10px;height:10px;border-radius:50%;background:#E2574C;display:inline-block"></span>Obesidad
  </span>
  `;
   document.getElementById('apex-gauge').insertAdjacentElement('afterend', labels);
 }
 
 function goToPlan() {
+  showTab('dashboard');
+}
+
+function goToChooseDiet() {
+  if (appState.diet.step === 'idle') {
+    appState.diet.step = 'tier';
+    saveState();
+  }
+  renderDashboard(getCurrentCatKey());
   showTab('dashboard');
 }

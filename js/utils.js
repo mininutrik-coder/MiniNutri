@@ -3,14 +3,30 @@ function calcBMIVal(weight, height) {
 }
 
 function getBMICat(bmi) {
-  if (bmi < 17.9) return { key: 'underweight', label: 'Bajo peso', color: '#1E88E5', cls: 'cat-underweight' };
-  if (bmi < 22.8) return { key: 'normal', label: 'Peso normal', color: '#4CAF50', cls: 'cat-normal' };
-  if (bmi < 30) return { key: 'overweight', label: 'Sobrepeso', color: '#FF8F00', cls: 'cat-overweight' };
-  return { key: 'obese', label: 'Obesidad', color: '#E53935', cls: 'cat-obese' };
+  if (bmi < 17.9) return { key: 'underweight', label: 'Bajo peso', color: '#4A90D9', cls: 'cat-underweight' };
+  if (bmi < 22.8) return { key: 'normal', label: 'Peso normal', color: '#4F9D6E', cls: 'cat-normal' };
+  if (bmi < 30) return { key: 'overweight', label: 'Sobrepeso', color: '#FF7F59', cls: 'cat-overweight' };
+  return { key: 'obese', label: 'Obesidad', color: '#E2574C', cls: 'cat-obese' };
 }
 
-function getCatLevel(key) {
-  return { underweight: 0, normal: 1, overweight: 2, obese: 3 }[key] ?? 2;
+// Normaliza una medición que viene de la API (measured_at/category) al formato
+// que usa el resto de la app (date/cat), recalculando el IMC en el cliente.
+function normalizeMeasurement(m) {
+  const weight = parseFloat(m.weight);
+  const height = parseFloat(m.height);
+  const bmi = parseFloat(m.bmi) || calcBMIVal(weight, height);
+  return {
+    id: m.id,
+    date: m.date || m.measured_at || new Date().toISOString(),
+    weight,
+    height,
+    bmi: bmi.toFixed(2),
+    cat: getBMICat(bmi).key
+  };
+}
+
+function normalizeMeasurements(arr) {
+  return (arr || []).map(normalizeMeasurement);
 }
 
 function saveState() {

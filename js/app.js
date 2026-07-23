@@ -68,4 +68,6 @@ function refreshApp() {
   showTab('calculator');
   loadChildDataIntoCalculator();
   setMascotMsg(`¡Hola ${child.name}! Soy Mini, tu amigo saludable`);
+
+  maybeStartTour();
 }

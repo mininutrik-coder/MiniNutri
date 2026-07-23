@@ -69,7 +69,7 @@ function renderDietIdle(dc) {
   dc.innerHTML = `
     <div style="text-align:center;padding:24px 8px">
       <p style="color:var(--text-soft);font-weight:600;margin-bottom:16px">Aún no has elegido tu dieta.</p>
-      <button class="btn btn-green" onclick="startDietSelection()">Elegir dieta</button>
+      <button class="btn btn-green" id="btn-elegir-dieta-plan" onclick="startDietSelection()">Elegir dieta</button>
     </div>`;
 }
 
